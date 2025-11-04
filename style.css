@@ -1,48 +1,41 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
+@font-face {
+  font-family: 'Pico8';
+  src: url('pico-8_.otf') format('truetype');
 }
-body{
-    background-image:url(retro-5.gif);
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Pico8', monospace;
 }
-img{
-height: 100vh;
-width: 100vw;
+
+
+
+#main-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
-iframe{
-    opacity: 0;
-}
+
 .controls {
-  margin-top: 550px;
-  margin-left: 30px;
-  /* background-color: red; */
-  height:50px; 
-
+  position: fixed;
+  /* stays above background */
+  bottom: 30px;
+  left: 10%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+  background: transparent;
 }
 
-/* button {
-
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 10px;
-  border: none;
-  background: #d87c5f;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+.buttons img {
+  height: 25px;
 }
-
-button:hover {
-  background: #c66b4f;
-} */
 
 /* Hide iframe but keep audio */
 #player iframe {
@@ -50,10 +43,86 @@ button:hover {
   height: 1px;
   position: absolute;
   left: -9999px;
+  pointer-events: none;   /* <-- prevents it from blocking clicks */
 }
+
 .material-symbols-outlined {
-  font-size: 498px ; /* icon size */
-  color: #ff0000 ;  /* icon color */
-  cursor: pointer; /* makes it clickable like a button */
-  
+  font-size: 800px;
+  /* icon size */
+  color: #ff0000;
+  /* icon color */
+  cursor: pointer;
+  /* makes it clickable like a button */
+  gap: 30px;
+}
+
+#nav-bar {
+  position: fixed;
+  /* stays on top while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: transparent;
+  z-index: 10;
+}
+
+.options {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  margin-right: 50px;
+  margin-top: 20px;
+  gap: 6px;
+  transition: transform 0.2s;
+}
+
+.options svg:hover {
+  transform: scale(1.1);
+}
+
+svg {
+  height: 25px;
+  color: red;
+  width: 30px;
+}
+
+#clock {
+  height: 25px;
+}
+
+#logo-name {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 60px;
+  color: red;
+}
+
+#bg-image {
+  position: fixed;
+  /* stay behind everything */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  /* cover entire screen without distortion */
+  z-index: 1;
+  /* behind navbar and controls */
+}
+
+
+#full {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+}
+.button-control{
+  background: transparent;
+  border: none;
 }
